@@ -1,47 +1,31 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * _strstr - returns the first substring coincidence.
- * @haystack: string where you are looking for 
- * @needle: subtring to found
+ * _strstr - first occurrence of the substring needle in the string haystack
+ * @haystack: main str to be examined
+ * @needle: searched in hystack
+ * Return: return 0
  *
- * Return: Always 0.
  */
-
-#include <stdio.h>
 
 char *_strstr(char *haystack, char *needle)
 {
-	int index2;
-	int counter;
+	char *str1, *str2; /*Declaring variables*/
 
-	if (needle[0] != '\0')
+	while (*haystack != '\0')
 	{
-		counter = 0;
-		for (index2 = 0; haystack[index2] != '\0'; index2++)
+		str1 = haystack; /*values*/
+		str2 = needle;
+
+		/*star WHILE*/
+		while (*haystack != '\0' && *str2 != '\0' && *haystack == *str2)
 		{
-			if (needle[counter] == haystack[index2])
-			{
-				if (needle[counter + 1] == '\0')
-					return (&haystack[index2 - counter]);
-				counter += 1;
-			}
-			else
-				counter = 0;
+			haystack++;
+			str2++;
 		}
+		if (*str2 == '\0')
+			return (str1);
+		haystack = str1 + 1;
 	}
-	else
-		return (haystack);
-	return (NULL);
+	return (0);
 }
-
-
-			 
-
-
-
-	
-		
-	
-	
